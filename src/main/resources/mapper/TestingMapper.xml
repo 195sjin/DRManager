@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.mapper.TestingMapper">
+
+    <!--void record(@Param("testing") Testing testing);-->
+    <insert id="record">
+        insert into testing values (null,#{testing.AQIDetectionStaffId},#{testing.ExMessageId},#{testing.AQILevel},#{testing.PM},#{testing.SO2},#{testing.CO},#{testing.updateTime})
+    </insert>
+
+    <!--List<Testing> getAllTest();-->
+    <select id="getAllTest" resultType="com.neu.pojo.Testing">
+        select * from testing
+    </select>
+
+
+    <!--TestingDto getAllByExId(@Param("messageId") Integer messageId);-->
+    <select id="getAllByExId" resultType="com.neu.dto.TestingDto">
+        select * from testing where ExMessageId = #{messageId}
+    </select>
+</mapper>

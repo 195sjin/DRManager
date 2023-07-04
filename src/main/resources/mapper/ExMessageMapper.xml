@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.mapper.ExMessageMapper">
+
+    <!--void report(Integer id, ExMessage exMessage);-->
+    <insert id="report" >
+        insert into exmessage values (null,#{message.supervisorId},#{message.address},#{message.description},#{message.vAQILevel},#{message.status},#{message.updateTime})
+    </insert>
+
+    <!--void changeStatus(@Param("messageId") Integer messageId);-->
+    <update id="changeStatus">
+        update exmessage set status = 1 where id = #{messageId}
+    </update>
+
+    <!--List<ExMessage> getAllMessage();-->
+    <select id="getAllMessage" resultType="com.neu.pojo.ExMessage">
+        select * from exmessage where status = 1
+    </select>
+
+    <!--List<ExMessage> getDoMessage();-->
+    <select id="getDoMessage" resultType="com.neu.pojo.ExMessage">
+        select * from exmessage
+    </select>
+
+    <!--List<ExMessage> getMessage(@Param("id") Integer id);-->
+    <select id="getMessage" resultType="com.neu.pojo.ExMessage">
+        select * from  exmessage where supervisorId = #{id}
+    </select>
+
+    <!--List<ExMessage> getStaffMessage(@Param("id") Integer messageId);-->
+    <select id="getStaffMessage" resultType="com.neu.pojo.ExMessage">
+        select * from exmessage where id = #{id}
+    </select>
+
+    <!--ExMessage getOneById(@Param("messageId") Integer exMessageId);-->
+    <select id="getOneById" resultType="com.neu.pojo.ExMessage">
+        select * from exmessage where id = #{messageId}
+    </select>
+</mapper>

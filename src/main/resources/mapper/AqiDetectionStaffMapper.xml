@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.mapper.AqiDetectionStaffMapper">
+
+    <!--AqiDetectionStaff getUserById(AqiDetectionStaff detectionStaff);-->
+    <select id="getUserById" parameterType="aqiDetectionStaff" resultType="com.neu.pojo.AqiDetectionStaff">
+        select * from aqidetectionstaff where id = #{id} and password = #{password}
+    </select>
+
+    <!--List<AqiDetectionStaff> getAllStaff();-->
+    <select id="getAllStaff" resultType="com.neu.pojo.AqiDetectionStaff">
+        select * from aqidetectionstaff
+    </select>
+
+    <!--AqiDetectionStaff getStaffById(@Param("id") Integer staffId);-->
+    <select id="getStaffById" resultType="com.neu.pojo.AqiDetectionStaff">
+        select * from aqidetectionstaff where id = #{id}
+    </select>
+</mapper>

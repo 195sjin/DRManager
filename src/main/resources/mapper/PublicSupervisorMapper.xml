@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.mapper.PublicSupervisorMapper">
+
+    <!--public void insertUser(PublicSupervisor publicSupervisor);-->
+    <insert id="insertUser" parameterType="com.neu.pojo.PublicSupervisor">
+        insert into publicsupervisor values(null,#{password},#{name},#{telephone})
+    </insert>
+
+    <!--public PublicSupervisor getUserByPhone(String phone);-->
+    <select id="getUserByPhone" parameterType="com.neu.pojo.PublicSupervisor" resultType="com.neu.pojo.PublicSupervisor">
+        select * from publicsupervisor where telephone = #{telephone} and password = #{password}
+    </select>
+
+    <!--PublicSupervisor getPublicById(@Param("supervisorId")Integer supervisorId);-->
+    <select id="getPublicById" resultType="com.neu.pojo.PublicSupervisor">
+        select * from publicsupervisor where id = #{supervisorId}
+    </select>
+</mapper>
